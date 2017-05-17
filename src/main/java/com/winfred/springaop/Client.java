@@ -21,8 +21,12 @@ public class Client {
 //        Greeting greeting = (Greeting) proxyFactory.getProxy();
 
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        Greeting greeting = (Greeting) context.getBean("greetingProxy");
+//        Greeting greeting = (Greeting) context.getBean("greetingProxy");
+//        greeting.sayHello("Jack");
+        GreetingImpl greetingImpl = (GreetingImpl) context.getBean("greetingProxy");
+        greetingImpl.sayHello("Jack");
 
-        greeting.sayHello("Jack");
+        Apology apology = (Apology) greetingImpl; // 将目标强制向上转型为Apology接口
+        apology.saySorry("Jack'");
     }
 }

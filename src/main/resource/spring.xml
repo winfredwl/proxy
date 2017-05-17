@@ -10,14 +10,16 @@
     <context:component-scan base-package="com.winfred" />
 
     <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="interfaces" value="com.winfred.springaop.Greeting"/>
-        <property name="target" ref="greetingImpl" />
+        <property name="interfaces" value="com.winfred.springaop.Apology"/> <!-- 需要动态实现的接口 -->
+        <property name="target" ref="greetingImpl" /> <!-- 目标类 -->
         <property name="interceptorNames">
             <list>
-                <value>greetingAroundAdvice</value>
-                <value>greetingThrowAdvice</value>
+                <value>greetingAroundAdvice</value> <!-- 环绕增强 -->
+                <value>greetingThrowAdvice</value> <!-- 抛出增强 -->
+                <value>greetingIntroAdvice</value> <!-- 引入增强 -->
             </list>
         </property>
+        <property name="proxyTargetClass" value="true" /> <!-- 代理目标类（默认为false， 代理接口） -->
     </bean>
 
 </beans>
