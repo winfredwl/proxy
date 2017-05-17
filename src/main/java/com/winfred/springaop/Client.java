@@ -1,6 +1,8 @@
 package com.winfred.springaop;
 
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author Winfred.Wang
@@ -9,14 +11,17 @@ import org.springframework.aop.framework.ProxyFactory;
 public class Client {
 
     public static void main(String[] args) {
-        ProxyFactory proxyFactory = new ProxyFactory();
-        proxyFactory.setTarget(new GreetingImpl());
-//        proxyFactory.addAdvice(new GreetingBeforeAdvice());
-//        proxyFactory.addAdvice(new GreetingAfterAdvice());
-//        proxyFactory.addAdvice(new GreetingBeforeAndAfterAdvice());
-        proxyFactory.addAdvice(new GreetingAroundAdvice());
+//        ProxyFactory proxyFactory = new ProxyFactory();
+//        proxyFactory.setTarget(new GreetingImpl());
+////        proxyFactory.addAdvice(new GreetingBeforeAdvice());
+////        proxyFactory.addAdvice(new GreetingAfterAdvice());
+////        proxyFactory.addAdvice(new GreetingBeforeAndAfterAdvice());
+//        proxyFactory.addAdvice(new GreetingAroundAdvice());
+//
+//        Greeting greeting = (Greeting) proxyFactory.getProxy();
 
-        Greeting greeting = (Greeting) proxyFactory.getProxy();
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        Greeting greeting = (Greeting) context.getBean("greetingProxy");
 
         greeting.sayHello("Jack");
     }
