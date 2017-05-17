@@ -15,6 +15,7 @@
         <property name="interceptorNames">
             <list>
                 <value>greetingAroundAdvice</value>
+                <value>greetingThrowAdvice</value>
             </list>
         </property>
     </bean>
