@@ -13,7 +13,8 @@ public class Client {
         proxyFactory.setTarget(new GreetingImpl());
 //        proxyFactory.addAdvice(new GreetingBeforeAdvice());
 //        proxyFactory.addAdvice(new GreetingAfterAdvice());
-        proxyFactory.addAdvice(new GreetingBeforeAndAfterAdvice());
+//        proxyFactory.addAdvice(new GreetingBeforeAndAfterAdvice());
+        proxyFactory.addAdvice(new GreetingAroundAdvice());
 
         Greeting greeting = (Greeting) proxyFactory.getProxy();
 
